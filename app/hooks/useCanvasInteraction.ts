@@ -397,12 +397,10 @@ export function useCanvasInteraction({
         setEditingTextNodeId(node.id);
       }
 
-      // Switch back to select tool
-      setActiveTool("select");
     }
 
     if (interaction.type === "freehand") {
-      setActiveTool("select");
+      // setActiveTool("select"); // Keep freehand active
     }
 
     setInteraction({ type: "idle" });
