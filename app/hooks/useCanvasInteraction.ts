@@ -223,6 +223,9 @@ export function useCanvasInteraction({
       current.activeTool === "rect" ||
       current.activeTool === "ellipse" ||
       current.activeTool === "diamond" ||
+      current.activeTool === "arrow" ||
+      current.activeTool === "parallelogram" ||
+      current.activeTool === "cylinder" ||
       current.activeTool === "text" ||
       current.activeTool === "image"
     ) {

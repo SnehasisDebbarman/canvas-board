@@ -155,6 +155,69 @@ export class CanvasRenderer {
         );
         break;
 
+      case "arrow": {
+        const x1 = node.width >= 0 ? r.x : r.x + r.width;
+        const y1 = node.height >= 0 ? r.y : r.y + r.height;
+        const x2 = node.width >= 0 ? r.x + r.width : r.x;
+        const y2 = node.height >= 0 ? r.y + r.height : r.y;
+        
+        // Draw the main line
+        this.rc.line(x1, y1, x2, y2, roughOpts);
+        
+        // Draw arrowhead
+        const angle = Math.atan2(y2 - y1, x2 - x1);
+        const headlen = 15;
+        this.rc.line(
+          x2, y2,
+          x2 - headlen * Math.cos(angle - Math.PI / 6),
+          y2 - headlen * Math.sin(angle - Math.PI / 6),
+          roughOpts
+        );
+        this.rc.line(
+          x2, y2,
+          x2 - headlen * Math.cos(angle + Math.PI / 6),
+          y2 - headlen * Math.sin(angle + Math.PI / 6),
+          roughOpts
+        );
+        break;
+      }
+
+      case "parallelogram": {
+        const offset = r.width * 0.2;
+        this.rc.polygon(
+          [
+            [r.x + offset, r.y],
+            [r.x + r.width, r.y],
+            [r.x + r.width - offset, r.y + r.height],
+            [r.x, r.y + r.height],
+          ],
+          roughOpts
+        );
+        break;
+      }
+
+      case "cylinder": {
+        const ry = Math.min(r.height * 0.15, 20);
+        // Cylinder body
+        const d = `
+          M ${r.x} ${r.y + ry}
+          L ${r.x} ${r.y + r.height - ry}
+          A ${r.width/2} ${ry} 0 0 0 ${r.x + r.width} ${r.y + r.height - ry}
+          L ${r.x + r.width} ${r.y + ry}
+          A ${r.width/2} ${ry} 0 0 1 ${r.x} ${r.y + ry}
+        `;
+        this.rc.path(d, roughOpts);
+        // Cylinder top lid
+        this.rc.ellipse(
+          r.x + r.width / 2,
+          r.y + ry,
+          r.width,
+          ry * 2,
+          roughOpts
+        );
+        break;
+      }
+
       case "freehand":
         if (node.points && node.points.length > 1) {
           this.drawFreehand(ctx, node.points, node.strokeColor, node.strokeWidth);

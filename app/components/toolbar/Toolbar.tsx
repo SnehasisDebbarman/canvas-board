@@ -57,10 +57,41 @@ export function Toolbar() {
     {
       type: "diamond",
       label: "Diamond",
-      shortcut: "D",
+      shortcut: "",
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l9 9-9 9-9-9 9-9z" />
+        </svg>
+      ),
+    },
+    {
+      type: "arrow",
+      label: "Arrow",
+      shortcut: "A",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      ),
+    },
+    {
+      type: "parallelogram",
+      label: "Parallelogram",
+      shortcut: "P",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4h12l-4 16H4L8 4z" />
+        </svg>
+      ),
+    },
+    {
+      type: "cylinder",
+      label: "Cylinder",
+      shortcut: "C",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3v10c0 1.657-3.582 3-8 3s-8-1.343-8-3V7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7c0 1.657 3.582 3 8 3s8-1.343 8-3" />
         </svg>
       ),
     },

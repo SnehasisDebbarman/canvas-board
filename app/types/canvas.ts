@@ -4,6 +4,9 @@ export type NodeType =
   | "rect"
   | "ellipse"
   | "diamond"
+  | "arrow"
+  | "parallelogram"
+  | "cylinder"
   | "text"
   | "image"
   | "freehand";
@@ -64,6 +67,9 @@ export type Tool =
   | "rect"
   | "ellipse"
   | "diamond"
+  | "arrow"
+  | "parallelogram"
+  | "cylinder"
   | "text"
   | "draw"
   | "image";

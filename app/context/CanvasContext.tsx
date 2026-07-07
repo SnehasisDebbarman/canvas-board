@@ -343,7 +343,10 @@ export function CanvasProvider({ children }: { children: React.ReactNode }) {
         case "h": case "H": setActiveTool("pan"); break;
         case "r": case "R": setActiveTool("rect"); break;
         case "e": case "E": setActiveTool("ellipse"); break;
-        case "d": case "D": setActiveTool("draw"); break;
+        case "d": case "D": setActiveTool("draw"); break; // Actually D is for draw or diamond? We'll leave draw as D, maybe Arrow as A
+        case "a": case "A": setActiveTool("arrow"); break;
+        case "p": case "P": setActiveTool("parallelogram"); break;
+        case "c": case "C": setActiveTool("cylinder"); break;
         case "t": case "T": setActiveTool("text"); break;
         case "i": case "I": setActiveTool("image"); break;
         case "Escape":
