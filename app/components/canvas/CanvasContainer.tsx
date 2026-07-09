@@ -32,6 +32,7 @@ export function CanvasContainer() {
     handlePointerDown,
     handlePointerMove,
     handlePointerUp,
+    handlePointerCancel,
     handleDoubleClick,
   } = useCanvasInteraction({
     canvasRef,
@@ -128,6 +129,7 @@ export function CanvasContainer() {
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
         onDoubleClick={handleDoubleClick}
       />
 

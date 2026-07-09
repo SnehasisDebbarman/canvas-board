@@ -57,6 +57,8 @@ export function useCanvasInteraction({
   // Double-click / editing text state
   const [editingTextNodeId, setEditingTextNodeId] = useState<string | null>(null);
 
+  const pointerIdRef = useRef<number | null>(null);
+
   // Keep latest refs to prevent stale closure dependencies in listeners
   const stateRef = useRef({
     nodes,
@@ -119,7 +121,9 @@ export function useCanvasInteraction({
 
   // Pointer Event Handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!e.isPrimary) return;
+    if (pointerIdRef.current !== null) return; // Ignore additional pointers
+    pointerIdRef.current = e.pointerId;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     try {
@@ -270,7 +274,7 @@ export function useCanvasInteraction({
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!e.isPrimary) return;
+    if (pointerIdRef.current !== e.pointerId) return; // Only process the active pointer
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -381,7 +385,9 @@ export function useCanvasInteraction({
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!e.isPrimary) return;
+    if (pointerIdRef.current !== e.pointerId) return;
+    pointerIdRef.current = null; // Clear active pointer
+
     const canvas = canvasRef.current;
     if (canvas) {
       try {
@@ -415,6 +421,14 @@ export function useCanvasInteraction({
 
     setInteraction({ type: "idle" });
     setSelectionRect(null);
+  };
+
+  const handlePointerCancel = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (pointerIdRef.current === e.pointerId) {
+      pointerIdRef.current = null;
+      setInteraction({ type: "idle" });
+      setSelectionRect(null);
+    }
   };
 
   const handleDoubleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -455,6 +469,7 @@ export function useCanvasInteraction({
     handlePointerDown,
     handlePointerMove,
     handlePointerUp,
+    handlePointerCancel,
     handleDoubleClick,
   };
 }

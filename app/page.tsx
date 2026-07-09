@@ -11,7 +11,7 @@ import { CanvasSettings } from "./components/toolbar/CanvasSettings";
 export default function Home() {
   return (
     <CanvasProvider>
-      <main className="relative flex flex-col w-screen h-screen overflow-hidden bg-zinc-950">
+      <main className="relative flex flex-col w-screen h-[100dvh] overflow-hidden bg-zinc-950">
         {/* Status indicator */}
         <ConnectionStatus />
 
