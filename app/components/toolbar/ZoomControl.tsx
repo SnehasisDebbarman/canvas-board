@@ -31,7 +31,7 @@ export function ZoomControl() {
   const percentage = Math.round(viewport.zoom * 100);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1 px-2 py-1.5 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
+    <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 flex items-center gap-1 px-2 py-1.5 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
       <button
         onClick={zoomOut}
         className="p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"

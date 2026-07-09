@@ -119,9 +119,12 @@ export function useCanvasInteraction({
 
   // Pointer Event Handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!e.isPrimary) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    canvas.setPointerCapture(e.pointerId);
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch (err) {}
 
     const current = stateRef.current;
     const rect = canvas.getBoundingClientRect();
@@ -267,6 +270,7 @@ export function useCanvasInteraction({
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!e.isPrimary) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -377,9 +381,12 @@ export function useCanvasInteraction({
   };
 
   const handlePointerUp = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!e.isPrimary) return;
     const canvas = canvasRef.current;
     if (canvas) {
-      canvas.releasePointerCapture(e.pointerId);
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch (err) {}
     }
 
     const current = stateRef.current;

@@ -14,7 +14,7 @@ export function CanvasSettings() {
   } = useCanvas();
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
+    <div className="fixed bottom-20 md:bottom-6 left-4 md:left-6 z-50 flex items-center gap-1.5 px-2.5 py-1.5 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
       {/* Undo Button */}
       <button
         onClick={undo}

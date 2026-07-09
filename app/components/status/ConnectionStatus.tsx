@@ -6,7 +6,7 @@ export function ConnectionStatus() {
   const { isOnline, syncStatus, pendingCount } = useConnectionStatus();
 
   return (
-    <div className="fixed top-6 left-6 z-50 flex items-center gap-3 px-3 py-2 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
+    <div className="fixed top-4 md:top-6 left-4 md:left-6 z-50 flex items-center gap-3 px-3 py-2 bg-zinc-900/90 dark:bg-zinc-950/90 backdrop-blur-xl border border-white/10 dark:border-white/5 rounded-xl shadow-lg">
       <div className="flex items-center gap-2">
         <span className="relative flex h-2.5 w-2.5">
           {syncStatus === "synced" && (
